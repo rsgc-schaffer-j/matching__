@@ -1,4 +1,12 @@
 PImage BG;
+PImage image1;
+PImage image2;
+PImage image3;
+PImage image4;
+PImage image5;
+PImage image6;
+PImage image7;
+PImage image8;
 
 int col1;
 int col2;
@@ -38,7 +46,9 @@ int m;
 int m1;
 int imagex;
 int score;
+int board;
 void setup() {
+  board=int(random(1, 11));
   size(640, 640);
   col1=255;
   col2=255;
@@ -56,32 +66,208 @@ void setup() {
   col14=255; 
   col15=255;
   col16=255;
-  
+
   imagex=700;
 
-  sq1=16;
-  sq2=62;
-  sq3=74;
-  sq4=23;
-  sq5=87;
-  sq6=62;
-  sq7=95;
-  sq8=31;
-  sq9=23;
-  sq10=8;
-  sq11=16;
-  sq12=87;
-  sq13=31;
-  sq14=95; 
-  sq15=8;
-  sq16=74;
+  //all boards
+  if (board==1) {
+    sq1=16;
+    sq2=62;
+    sq3=74;
+    sq4=23;
+    sq5=87;
+    sq6=62;
+    sq7=95;
+    sq8=31;
+    sq9=23;
+    sq10=8;
+    sq11=16;
+    sq12=87;
+    sq13=31;
+    sq14=95; 
+    sq15=8;
+    sq16=74;
+  }
+  if (board==2) {
+    sq1=16;
+    sq5=16;
+    sq2=62;
+    sq9=62;
+    sq3=74;
+    sq10=74;
+    sq4=23;
+    sq15=23;
+    sq6=87;
+    sq13=87;
+    sq7=8;
+    sq11=8;
+    sq8=95;
+    sq16=95; 
+    sq12=31;
+    sq14=31;
+  }
+  if (board==3) {
+    sq1=16;
+    sq9=16;
+    sq2=62;
+    sq4=62;
+    sq3=74;
+    sq7=74;
+    sq5=23;
+    sq10=23;
+    sq6=87;
+    sq14=87;
+    sq8=8;
+    sq15=8;
+    sq12=95;
+    sq16=95; 
+    sq11=31;
+    sq13=31;
+  }
+  if (board==4) {
+    sq1=16;
+    sq3=16;
+    sq2=62;
+    sq7=62;
+    sq4=74;
+    sq10=74;
+    sq5=23;
+    sq15=23;
+    sq6=87;
+    sq12=87;
+    sq8=8;
+    sq11=8;
+    sq9=95;
+    sq15=95; 
+    sq13=31;
+    sq16=31;
+  }
+  if (board==5) {
+    sq1=16;
+    sq9=16;
+    sq2=62;
+    sq8=62;
+    sq3=74;
+    sq11=74;
+    sq4=23;
+    sq15=23;
+    sq5=87;
+    sq7=87;
+    sq6=8;
+    sq16=8;
+    sq10=95;
+    sq13=95; 
+    sq12=31;
+    sq14=31;
+  }
+  if (board==6) {
+    sq1=16;
+    sq15=16;
+    sq2=62;
+    sq8=62;
+    sq3=74;
+    sq9=74;
+    sq4=23;
+    sq11=23;
+    sq5=87;
+    sq13=87;
+    sq6=8;
+    sq16=8;
+    sq7=95;
+    sq12=95; 
+    sq10=31;
+    sq14=31;
+  }
+  if (board==7) {
+    sq1=16;
+    sq3=16;
+    sq2=62;
+    sq14=62;
+    sq11=74;
+    sq8=74;
+    sq4=23;
+    sq13=23;
+    sq5=87;
+    sq9=87;
+    sq6=8;
+    sq7=8;
+    sq12=95;
+    sq15=95; 
+    sq16=31;
+    sq10=31;
+  }
+  if (board==8) {
+    sq1=16;
+    sq16=16;
+    sq2=62;
+    sq7=62;
+    sq3=74;
+    sq9=74;
+    sq4=23;
+    sq15=23;
+    sq5=87;
+    sq8=87;
+    sq6=8;
+    sq11=8;
+    sq10=95;
+    sq13=95; 
+    sq14=31;
+    sq12=31;
+  }
+  if (board==9) {
+    sq1=16;
+    sq4=16;
+    sq2=62;
+    sq13=62;
+    sq3=74;
+    sq7=74;
+    sq16=23;
+    sq9=23;
+    sq5=87;
+    sq11=87;
+    sq6=8;
+    sq14=8;
+    sq15=95;
+    sq12=95; 
+    sq8=31;
+    sq10=31;
+  }
+  if (board==10) {
+    sq1=16;
+    sq13=16; 
+    sq2=62;
+    sq4=62;
+    sq3=74;
+    sq9=74;
+    sq5=23;
+    sq7=23;
+    sq6=87;
+    sq14=87;
+    sq8=8;
+    sq11=8;
+    sq15=95;
+    sq10=95; 
+    sq12=31;
+    sq16=31;
+  }
+
+
   m1=0;
-  score=10;
-   BG = loadImage("bg.jpg");
+  m=0;
+  score=0;
+  BG = loadImage("bg.jpg");
+  image1 = loadImage("tree.png");
+  image2 = loadImage("apple.jpeg");
+  image3 = loadImage("phone.png");
+  image4 = loadImage("heli.png");
+  image5 = loadImage("book.jpg");
+  image6 = loadImage("pen.png");
+  image7 = loadImage("ufo.png");
+  image8 = loadImage("clock.png");
 }
 
 void draw() {
-  background(0);
+  background(255);
   m= millis()/1000;
   line(160, 0, 160, 650);
   line(320, 0, 320, 650);
@@ -90,92 +276,676 @@ void draw() {
   line(0, 320, 640, 320); 
   line(0, 480, 640, 480);
 
-  textSize(60);
-  fill(95, 229, 219);
-  rect(0, 0, 160, 160);
-  fill(col1);
-  rect(0, 0, 160, 160);
+  //all boards
 
-  fill(63, 255, 0);
-  rect(160, 0, 160, 160);
-  fill(col2);
-  rect(160, 0, 160, 160);
+  if (board==1) {
 
-  fill(224, 18, 180);
-  rect(320, 0, 160, 160);
-  fill(col3);
-  rect(320, 0, 160, 160);
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
 
-  fill(225, 193, 242);
-  rect(480, 0, 160, 160);
-  fill(col4);
-  rect(480, 0, 160, 160);
 
-  fill(25, 82, 24);
-  rect(0, 160, 160, 160);
-  fill(col5);
-  rect(0, 160, 160, 160);
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
 
-  fill(63, 255, 0);
-  rect(160, 160, 160, 160);
-  fill(col6);
-  rect(160, 160, 160, 160);
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
 
-  fill(255, 255, 0);
-  rect(320, 160, 160, 160);
-  fill(col7);
-  rect(320, 160, 160, 160);
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
 
-  fill(113, 90, 44);
-  rect(480, 160, 160, 160);
-  fill(col8);
-  rect(480, 160, 160, 160);
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
 
-  fill(225, 193, 242);
-  rect(0, 320, 160, 160);
-  fill(col9);
-  rect(0, 320, 160, 160);
+    image(image2, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
 
-  fill(0, 0, 255);
-  rect(160, 320, 160, 160);
-  fill(col10);
-  rect(160, 320, 160, 160);
+    image(image7, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
 
-  fill(95, 229, 219);
-  rect(320, 320, 160, 160);
-  fill(col11);
-  rect(320, 320, 160, 160);
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
 
-  fill(25, 82, 24);
-  rect(480, 320, 160, 160);
-  fill(col12);
-  rect(480, 320, 160, 160);
+    image(image4, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
 
-  fill(113, 90, 44);
-  rect(0, 480, 160, 160);
-  fill(col13);
-  rect(0, 480, 160, 160);
+    image(image6, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
 
-  fill(255, 255, 0);
-  rect(160, 480, 160, 160);
-  fill(col14);
-  rect(160, 480, 160, 160);
+    image(image1, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
 
-  fill(0, 0, 255);
-  rect(320, 480, 160, 160);
-  fill(col15);
-  rect(320, 480, 160, 160);
+    image(image5, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
 
-  fill(224, 18, 180);
-  rect(480, 480, 160, 160);
-  fill(col16);
-  rect(480, 480, 160, 160);
+    image(image8, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image7, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image6, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image3, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+
+  if (board==2) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image1, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image7, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image2, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image3, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image7, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image5, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image6, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image5, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image4, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image8, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  
+  if (board==3) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image2, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image3, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image1, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image5, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image4, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image7, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image4, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image6, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image8, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image7, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==4) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image1, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image2, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image3, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image4, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image8, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image6, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image7, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image5, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image3, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image7, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==5) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image5, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image2, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image1, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image7, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image3, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image8, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image7, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image8, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image4, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image6, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==6) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image7, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image2, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image3, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image8, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image4, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image7, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image5, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image8, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image1, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image6, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==7) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image1, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image6, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image5, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image3, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image8, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image7, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image4, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image2, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image7, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image3, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==8) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image4, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image2, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image5, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image3, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image7, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image6, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image8, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image7, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image8, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image4, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image1, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+  if (board==9) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image1, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image3, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image4, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image8, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image5, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image7, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image2, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image6, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image7, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image4, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+
+  if (board==10) {
+    image(image1, 0, 0, 160, 160);
+    fill(col1);
+    rect(0, 0, 160, 160);
+
+
+    image(image2, 160, 0, 160, 160);
+    fill(col2);
+    rect(160, 0, 160, 160);
+
+    image(image3, 320, 0, 160, 160);
+    fill(col3);
+    rect(320, 0, 160, 160);
+
+    image(image2, 480, 0, 160, 160);
+    fill(col4);
+    rect(480, 0, 160, 160);
+
+    image(image5, 0, 160, 160, 160);
+    fill(col5);
+    rect(0, 160, 160, 160);
+
+    image(image6, 160, 160, 160, 160);
+    fill(col6);
+    rect(160, 160, 160, 160);
+
+    image(image5, 320, 160, 160, 160);
+    fill(col7);
+    rect(320, 160, 160, 160);
+
+    image(image8, 480, 160, 160, 160);
+    fill(col8);
+    rect(480, 160, 160, 160);
+
+    image(image3, 0, 320, 160, 160);
+    fill(col9);
+    rect(0, 320, 160, 160);
+
+    image(image4, 160, 320, 160, 160);
+    fill(col10);
+    rect(160, 320, 160, 160);
+
+    image(image8, 320, 320, 160, 160);
+    fill(col11);
+    rect(320, 320, 160, 160);
+
+    image(image7, 480, 320, 160, 160);
+    fill(col12);
+    rect(480, 320, 160, 160);
+
+    image(image1, 0, 480, 160, 160);
+    fill(col13);
+    rect(0, 480, 160, 160);
+
+    image(image6, 160, 480, 160, 160);
+    fill(col14);
+    rect(160, 480, 160, 160);
+
+    image(image4, 320, 480, 160, 160);
+    fill(col15);
+    rect(320, 480, 160, 160);
+
+    image(image7, 480, 480, 160, 160);
+    fill(col16);
+    rect(480, 480, 160, 160);
+  }
+
   textSize(20);
   fill(0);
   text(""+m, 20, 20);
   if (x>0&&x1>0) {
     int y=x*x1;
-    if (y==256||y==3844||y==5476||y==529||y==7569||y==9025||y==961||y==64) {
+    if (y==255||y==3844||y==5476||y==529||y==7569||y==9025||y==961||y==64||y==256) {
 
       if (col1==256) {
         col1=257;
@@ -230,7 +1000,7 @@ void draw() {
       score=score+1;
     } else {
       m1=m1+1;
-      if (m1>30) {
+      if (m1>15) {
 
         if (col1==256) {
           col1=255;
@@ -290,10 +1060,10 @@ void draw() {
     noLoop();
     textSize(30);
     imagex=0;
-    image(BG,imagex,0,640,640);
-     text("CONGRATS it took you "+m, 60, 300);
-    text("seconds",425,300);
-    text("press 'R' to restart",200,350);
+    image(BG, imagex, 0, 640, 640);
+    text("CONGRATS it took you "+m, 60, 300);
+    text("  seconds", 425, 300);
+    text("press 'R' to restart", 200, 350);
   }
 }
 
@@ -466,8 +1236,8 @@ void mouseClicked() {
   }
 }
 
-void keyPressed(){
-  if (key=='r'||key=='R'){
+void keyPressed() {
+  if (key=='r'||key=='R') {
     setup();
     loop();
   }
